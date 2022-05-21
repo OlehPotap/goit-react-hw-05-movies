@@ -1,0 +1,15 @@
+.link {
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 30px;
+    color: black;
+    padding: 15px 0;
+}
+
+.activeLink {
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 30px;
+    color: red;    
+    padding: 15px 0;
+}
