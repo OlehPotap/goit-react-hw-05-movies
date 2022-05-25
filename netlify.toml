@@ -1,6 +1,0 @@
-[build]
-    publish = 'build'
-[[redirects]]
-    from = "/*"
-    to = "/intex.html"
-    status = 200
