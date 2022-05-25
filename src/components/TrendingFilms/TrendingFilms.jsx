@@ -34,6 +34,7 @@ const TrendsMovie = () => {
     fetchPosts();
   }, []);
   const filmName = data.posts.map(item => {
+    console.log(item);
     return (
       <li key={item.id} className={style.link__item}>
         <Link to={`movies/${item.id}`} className={style.link} state={{from: location}}>

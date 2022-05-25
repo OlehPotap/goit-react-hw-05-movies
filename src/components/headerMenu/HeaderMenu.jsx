@@ -10,6 +10,7 @@ const HeaderMenu = () => {
     <Link to={items.to}className={style.link} >{items.text}</Link>
     </li>)
   })
+  console.log(headerName);
   return (
     <div className={style.container}>
       <ul className={style.list_Navi}>

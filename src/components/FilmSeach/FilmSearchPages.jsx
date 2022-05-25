@@ -11,6 +11,7 @@ const FilmSearch = () => {
 
     const searchQuery = searchParams.get('name');
     const location =useLocation()
+    console.log(searchQuery);
     const handleChange=({target})=>{
         setValue(target.value)
     }
