@@ -1,0 +1,22 @@
+.link
+{
+    margin-right: 5px;
+ 
+    text-decoration: none;
+    font-size:40px;
+    margin-left: 50px;
+}
+.container{
+    padding: 10px;
+    display: block;
+    text-align: center;
+}
+.navi_items{
+    text-decoration: none;
+    list-style-type: none;
+}
+.list_Navi
+{
+    display: flex;
+    justify-content: center;
+}

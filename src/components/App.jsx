@@ -1,74 +1,27 @@
-import { Route, Routes } from 'react-router-dom';
-import HomePage from './HomePage/HomePage';
-import MoviesPage from './MoviesPage';
-import Navigation from './Navigation/Navigation';
-import Movie from './Movie';
-import Cast from './Movie/Cast/Cast';
-import Review from './Movie/Review/Review';
 
-import { getTrendingApi, getSearchedApi, } from 'utils/Api';
-import { useState, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Suspense,lazy} from 'react';
+
+const Casts = lazy(() => import("./casts/Casts"));
+const Review = lazy(() => import("./Rewievs/Reviews"));
+const FilmSearch = lazy(() => import("../pages/moviesSearchPage/MoviesSearchPage"));
+const HeaderMenu = lazy(() => import("../pages/headerPage/HeaderPage"));
+const SingleFilmPage = lazy(() => import("../pages/singleFilmPage/SingleFilmPage"));
+const MainPage = lazy(() => import("../pages/mainPage/mainPage"));
 
 export const App = () => {
-  const [trending, setTrending] = useState([]);
-  const [searchedMovie, setSearchedMovie] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [movieId, setMovieId] = useState(null);
-  // const [movie, SetMovie] = useState(null);
-  // const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    getTrendingApi()
-      .then(({ data }) => {
-        setTrending(data.results);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    if(!searchedMovie) {
-      return
-    } else{
-      getSearchedApi(searchedMovie)
-      .then(({data})=>{setSearchResults(data.results)})
-      .catch(err => {
-        console.error(err);
-      });
-    }
-  
-  }, [searchedMovie]);
-
-  const handleonSubmit = movie => {
-    setSearchedMovie(movie);
-  };
-
-  const handleClick = id => {
-    setMovieId(id)
-  }
-
   return (
-    <>
-      <Navigation />
+    <Suspense fallback={<p>...Loading</p>}>
       <Routes>
-        <Route path="/" element={<HomePage trending={trending} onClick={handleClick}/>}></Route>
-        <Route
-          path="/movies"
-          element={
-            <MoviesPage
-              results={searchResults}
-              onSubmit={handleonSubmit}
-              onClick={handleClick}
-            />
-          }
-        ></Route>
-        <Route path='/movies/:id' element={<Movie movieId={movieId}/>}>
-
-        <Route path="cast" element={<Cast movieId={movieId}/>} />
-          <Route path="reviews" element={<Review movieId={movieId}/>} />
-          </Route>
+        <Route path='/' element={<HeaderMenu/>}>
+        <Route index element={<MainPage />}/>
+        <Route path="movies" element={<FilmSearch/>}/>
+        <Route path="movies/:id/" element={<SingleFilmPage />}>
+          <Route path="cast" element={<Casts/>} />
+          <Route path="reviews" element={<Review/>} />
+        </Route>
+        </Route>
       </Routes>
-    </>
+    </Suspense>
   );
 };

@@ -1,0 +1,21 @@
+.buttonlink
+{
+    display: inline-block; 
+    background: #8C959D; 
+    color: #fff; 
+    padding: 5px 5px; 
+    text-decoration: none; 
+    border-radius: 3px;
+}
+.filmList{
+    display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(3, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+
+}
+.link_bam{
+    text-decoration: none;
+    list-style-type: none;
+}

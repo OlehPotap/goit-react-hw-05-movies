@@ -1,0 +1,28 @@
+.link{
+    margin-right: 10px;
+    text-decoration: none;
+    list-style-type: none;
+    color: pink;
+    border: 1px black solid;
+    padding: 3px;
+}
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.film_detail
+{
+    display:  flex;
+
+}
+.film_description{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.genresList{
+    text-decoration: none;
+    list-style-type: none;
+}

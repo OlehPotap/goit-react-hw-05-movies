@@ -1,14 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { App } from 'components/App';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+// const MyComponent = lazy(() => import("./components/App"));
+ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    
+    <BrowserRouter basename="/">
     <App />
+
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
+
